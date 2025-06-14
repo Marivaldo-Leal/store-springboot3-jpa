@@ -1,9 +1,15 @@
 package com.leal.store.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String email;
@@ -21,13 +27,12 @@ public class User implements Serializable {
         this.password = password;
         this.phone = phone;
     }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -73,4 +78,6 @@ public class User implements Serializable {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+
 }
