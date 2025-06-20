@@ -1,6 +1,10 @@
 package com.leal.store.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,6 +19,10 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String phone;
+
+
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
 
     public User() {
     }
@@ -65,6 +73,10 @@ public class User implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     @Override
