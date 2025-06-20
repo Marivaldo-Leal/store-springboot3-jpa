@@ -16,13 +16,13 @@ public class OrderResource {
     OrderService service = new OrderService();
 
     @GetMapping
-    public ResponseEntity<List<Order>> FindAll() {
+    public ResponseEntity<List<Order>> findAll() {
         List<Order> orders = service.findAll();
         return ResponseEntity.ok().body(orders);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Order> findByOrderId(@PathVariable long id) {
+    public ResponseEntity<Order> findById(@PathVariable long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 

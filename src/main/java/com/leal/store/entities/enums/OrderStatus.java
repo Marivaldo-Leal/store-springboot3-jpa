@@ -1,6 +1,4 @@
-package com.leal.store.entities;
-
-import org.apache.logging.log4j.message.StringFormattedMessage;
+package com.leal.store.entities.enums;
 
 public enum OrderStatus {
     WAITING_PAYMENT(1),

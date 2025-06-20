@@ -2,6 +2,7 @@ package com.leal.store.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.leal.store.entities.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
