@@ -13,7 +13,7 @@ import java.util.List;
 public class OrderResource {
 
     @Autowired
-    OrderService service = new OrderService();
+    private OrderService service;
 
     @GetMapping
     public ResponseEntity<List<Order>> findAll() {
