@@ -4,6 +4,7 @@ import com.leal.store.entities.User;
 import com.leal.store.repositores.UserRepository;
 import com.leal.store.services.exception.DatabaseException;
 import com.leal.store.services.exception.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -41,9 +42,13 @@ public class UserService {
     }
 
     public User update(Long id, User obj) {
-        User entity = userRepository.getReferenceById(id);
-        updateDate(obj, entity);
-        return userRepository.save(entity);
+        try {
+            User entity = userRepository.getReferenceById(id);
+            updateDate(obj, entity);
+            return userRepository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateDate(User obj, User entity) {
